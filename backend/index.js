@@ -10,8 +10,9 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*",
-  },
+    origin: "*", // Or your frontend domain
+    methods: ["GET", "POST"]
+  }
 });
 
 const rooms = new Map();
@@ -210,5 +211,5 @@ app.get("*", (req, res) => {
 });
 
 server.listen(port, () => {
-  console.log("Server is working on port 5000");
+  console.log(`Server is working on port ${port}`);
 });
